@@ -8,10 +8,11 @@ install:
 script:
   - black --check .
   - flake8 .
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
   - coverage run --source=. mysite/manage.py test
 
 after_script:
-  - coveralls --verbose
+  - coveralls --verbose --branch=main
 
 deploy:
   provider: elasticbeanstalk
