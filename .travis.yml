@@ -1,7 +1,31 @@
+dist: focal
 language: python
 python:
-  - "3.9"
+  - 3.11
 install:
   - pip install -r requirements.txt
+
+before_script:
+  - python manage.py migrate
+  - python manage.py collectstatic --noinput
+
 script:
-  - pytest
+  - black --check .
+  - flake8 .
+  - coverage run --source=hw2-app,polls manage.py test
+
+after_script:
+  - coveralls
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: "$AWS_ACCESS_ID"
+  secret_access_key: "$AWS_SECRET_KEY"
+  region: "us-east-1"
+  app: "hw2-app"
+  env: "hw2-app-env"
+  bucket_name: "elasticbeanstalk-us-west-2-509399599475"
+  # on:
+  #   repo: cnrzhang/aws-deploy-test-2
+  #   branch: main
+  # skip_cleanup: 'true'
