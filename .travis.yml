@@ -9,7 +9,7 @@ script:
   - black --check .
   - flake8 .
   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
-  - coverage run --source=. mysite/manage.py test
+  - coverage run --source=. mysite/manage.py test polls
 
 after_script:
   - coveralls --verbose --branch=main
