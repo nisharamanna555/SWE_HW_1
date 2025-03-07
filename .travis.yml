@@ -13,7 +13,7 @@ script:
   - black --check .
   - flake8 .
   # - coverage run --source=hw2-app,polls manage.py test
-  - coverage run --source=. manage.py test
+  - cd mysite && coverage run --source=. manage.py test
 
 after_script:
   - coveralls
