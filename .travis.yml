@@ -11,7 +11,7 @@ script:
   - coverage run --source=. mysite/manage.py test
 
 after_script:
-  - coveralls --branch=main --verbose
+  - coveralls --verbose
 
 deploy:
   provider: elasticbeanstalk
