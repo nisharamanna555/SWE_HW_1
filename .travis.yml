@@ -17,7 +17,7 @@ deploy:
   provider: elasticbeanstalk
   access_key_id: "$AWS_ACCESS_ID"
   secret_access_key: "$AWS_SECRET_KEY"
-  region: "us-east-1"
+  region: "us-west-2"
   app: "hw2-app"
   env: "hw2-app-env"
   bucket_name: "elasticbeanstalk-us-west-2-509399599475"
